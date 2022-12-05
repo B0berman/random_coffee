@@ -65,7 +65,28 @@ This project relies on [flutter_localizations][flutter_localizations_link] and f
 ### Adding Strings
 
 1. To add a new localizable string, open the `app_en.arb` file at `lib/l10n/arb/app_en.arb`.
+`app_en.arb`
+
+```arb
+{
+    "@@locale": "en",
+    "randomCoffeeAppBarTitle": "Random Coffee",
+}
+```
+
 2. Then add a new key/value and description
+`app_en.arb`
+
+```arb
+{
+    "@@locale": "en",
+    "randomCoffeeAppBarTitle": "Random Coffee",
+    "@randomCoffeeAppBarTitle": {
+        "description": "Text shown in the AppBar of the Random Coffee Page"
+    }
+}
+```
+
 3. Use the new string
 
 ```dart
@@ -112,9 +133,9 @@ Update the `CFBundleLocalizations` array in the `Info.plist` at `ios/Runner/Info
 ```arb
 {
     "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
+    "randomCoffeeAppBarTitle": "Random Coffee",
+    "@randomCoffeeAppBarTitle": {
+        "description": "Text shown in the AppBar of the Random Coffee Page"
     }
 }
 ```
@@ -124,9 +145,9 @@ Update the `CFBundleLocalizations` array in the `Info.plist` at `ios/Runner/Info
 ```arb
 {
     "@@locale": "es",
-    "counterAppBarTitle": "Contador",
-    "@counterAppBarTitle": {
-        "description": "Texto mostrado en la AppBar de la página del contador"
+    "randomCoffeeAppBarTitle": "Random Coffee",
+    "@randomCoffeeAppBarTitle": {
+        "description": "Texto mostrado en la AppBar de la página de cafes aleatorios"
     }
 }
 ```
