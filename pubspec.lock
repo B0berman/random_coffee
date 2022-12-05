@@ -106,13 +106,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.6"
-  equatable:
-    dependency: "direct main"
-    description:
-      name: equatable
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.5"
   fake_async:
     dependency: transitive
     description:
@@ -198,13 +191,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.1"
-  image_downloader:
-    dependency: "direct main"
-    description:
-      name: image_downloader
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.31.0"
   intl:
     dependency: "direct main"
     description:

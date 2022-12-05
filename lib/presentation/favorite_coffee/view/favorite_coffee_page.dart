@@ -3,16 +3,20 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:random_coffee/config/services.dart';
+import 'package:random_coffee/domain/coffee_image_use_case.dart';
 import 'package:random_coffee/l10n/l10n.dart';
 import 'package:random_coffee/presentation/favorite_coffee/cubit/favorite_coffee_cubit.dart';
+import 'package:random_coffee/presentation/shared/list_state.dart';
 
 class FavoriteCoffeePage extends StatelessWidget {
   const FavoriteCoffeePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final useCases = injector<CoffeeImageUseCase>();
     return BlocProvider(
-      create: (_) => FavoriteCoffeeCubit(),
+      create: (_) => FavoriteCoffeeCubit(useCases)..getFavoriteCoffeesUrls(),
       child: const FavoriteCoffeesView(),
     );
   }
@@ -28,23 +32,21 @@ class FavoriteCoffeesView extends StatelessWidget {
       appBar: AppBar(
         title: Text(l10n.favoriteCoffeeAppBarTitle),
       ),
-      body: FutureBuilder<List<String>>(
-          future: context.read<FavoriteCoffeeCubit>().getFavoriteCoffeesUrls(),
-          builder: (BuildContext context, AsyncSnapshot<List<String>> snapshot) {
-            if (snapshot.hasData) {
-              return snapshot.data!.isNotEmpty ? ListView.builder(
-                  itemCount: snapshot.data!.length,
-                  itemBuilder: (context, pos) {
-                    return FavoriteCoffeeImage(url: snapshot.data![pos]);
-                  },)
-              : Center(child: Text(l10n.noFavoriteCoffees));
+      body: BlocBuilder<FavoriteCoffeeCubit, ListState<String>>(
+          builder: (context, state) {
+            if (state.status == ListStatus.success) {
+              return state.items.isNotEmpty ? ListView.builder(
+                itemCount: state.items.length,
+                itemBuilder: (context, pos) {
+                  return FavoriteCoffeeImage(url: state.items[pos]);
+                },)
+                  : Center(child: Text(l10n.noFavoriteCoffees));
+            } else if (state.status == ListStatus.loading) {
+              return const Center(child: CircularProgressIndicator());
             }
-            if (snapshot.hasError) {
-              log('Error: ${snapshot.runtimeType},'
-                  '${snapshot.error}, ${snapshot.stackTrace}');
-            }
-            return const Center(child: CircularProgressIndicator());
-          },),
+            return Center(child: Text(''));
+          }
+      ),
     );
   }
 }

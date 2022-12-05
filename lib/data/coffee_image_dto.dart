@@ -1,7 +1,6 @@
-import 'package:equatable/equatable.dart';
 import 'package:random_coffee/data/definitions.dart';
 
-class CoffeeImageDTO extends Equatable {
+class CoffeeImageDTO {
   const CoffeeImageDTO({required this.file});
 
   factory CoffeeImageDTO.fromJson(JSON json) {
@@ -9,9 +8,4 @@ class CoffeeImageDTO extends Equatable {
   }
 
   final String file;
-
-  @override
-  List<Object?> get props => [
-    file
-  ];
 }

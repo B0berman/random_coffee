@@ -72,15 +72,9 @@ class CoffeeImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
     return BlocBuilder<RandomCoffeeCubit, CoffeeState>(
         builder: (context, state) {
           if (state is LoadedCoffee) {
-            if (state.favorite) {
-              ScaffoldMessengerState().showSnackBar(
-                  SnackBar(content: Text(l10n.favoriteAdded))
-              );
-            }
             return Image.network(state.url,
               errorBuilder: (context, object, f) {
                 log('Error on Image.network(): $f');

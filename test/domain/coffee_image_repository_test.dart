@@ -1,8 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:random_coffee/data/coffee_image_datasource.dart';
-import 'package:random_coffee/data/file_manager.dart';
 import 'package:random_coffee/domain/coffee_image_repository.dart';
-import 'package:random_coffee/domain/coffee_image_use_case.dart';
 
 import '../test_services.dart';
 

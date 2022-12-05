@@ -1,16 +1,17 @@
 import 'package:bloc/bloc.dart';
-import 'package:random_coffee/config/services.dart';
 import 'package:random_coffee/domain/coffee_image_use_case.dart';
+import 'package:random_coffee/presentation/shared/list_state.dart';
 
-final List<String> coffeeListInitialState = List.empty();
+const ListState<String> coffeeListInitialState = ListState.loading();
 
-class FavoriteCoffeeCubit extends Cubit<List<String>> {
+class FavoriteCoffeeCubit extends Cubit<ListState<String>> {
 
-  FavoriteCoffeeCubit() : super(coffeeListInitialState);
+  FavoriteCoffeeCubit(this._coffeeImageUseCase) : super(coffeeListInitialState);
 
-  Future<List<String>> getFavoriteCoffeesUrls() async {
-    final urls = await injector<CoffeeImageUseCase>().getFavoriteCoffees();
-    emit(urls);
-    return urls;
+  final CoffeeImageUseCase _coffeeImageUseCase;
+
+  Future<void> getFavoriteCoffeesUrls() async {
+    final urls = await _coffeeImageUseCase.getFavoriteCoffees();
+    emit(ListState.success(items: urls));
   }
 }

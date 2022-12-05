@@ -10,7 +10,6 @@ environment:
 dependencies:
   bloc: ^8.1.0
   dio: ^4.0.6
-  equatable: ^2.0.5
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.1
@@ -18,7 +17,6 @@ dependencies:
     sdk: flutter
   get_it: ^7.2.0
   http_mock_adapter: ^0.3.1
-  image_downloader: ^0.31.0
   intl: ^0.17.0
   path_provider: ^2.0.11
 

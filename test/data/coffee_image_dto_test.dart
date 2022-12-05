@@ -9,7 +9,6 @@ void main() {
     test('Deserialize JSON correctly', () {
       final dto = CoffeeImageDTO.fromJson(json);
       expect(dto.file, fakeUri);
-      expect(dto.file, dto.props.first);
     });
   });
 }
