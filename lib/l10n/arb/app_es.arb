@@ -1,0 +1,13 @@
+{
+    "@@locale": "es",
+    "randomCoffeeAppBarTitle": "Random Coffee",
+    "@randomCoffeeAppBarTitle": {
+        "description": "Texto mostrado en la AppBar de la página de cafes aleatorios"
+    },
+    "favoriteCoffeeAppBarTitle": "Coffees favoritos",
+    "@favoriteCoffeeAppBarTitle": {
+        "description": "Texto mostrado en la AppBar de la página de cafes preferidos"
+    },
+    "noFavoriteCoffees": "Aun no tienes un cafe favorito",
+    "favoriteAdded": "El cafe ha sido agregado a tus favoritos"
+}
